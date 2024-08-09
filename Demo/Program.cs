@@ -4,18 +4,20 @@ namespace Demo
 {
     internal class Program
     {
-        public static void Print10NumbersFromSeries(ISeries series)
-        {
+        #region Interface Ex 01
+        //public static void Print10NumbersFromSeries(ISeries series)
+        //{
 
-            if (series is not null) { 
-                for (int i = 0; i < 10; i++)
-                {
-                    System.Console.WriteLine(series.Current);
-                    series.GetNext();
-                }
-                series.Reset();
-            }
-        }
+        //    if (series is not null) { 
+        //        for (int i = 0; i < 10; i++)
+        //        {
+        //            System.Console.WriteLine(series.Current);
+        //            series.GetNext();
+        //        }
+        //        series.Reset();
+        //    }
+        //} 
+        #endregion
 
         static void Main(string[] args)
         {
@@ -47,23 +49,39 @@ namespace Demo
 
             #endregion
 
-            #region Interface Ex 02
+            #region Interface Ex 01
 
-            SeriesByTwo seriesByTwo = new SeriesByTwo();
+            //SeriesByTwo seriesByTwo = new SeriesByTwo();
 
-            Print10NumbersFromSeries(seriesByTwo);
+            //Print10NumbersFromSeries(seriesByTwo);
 
-            SeriesByThree seriesByThree = new SeriesByThree();
+            //SeriesByThree seriesByThree = new SeriesByThree();
 
-            Print10NumbersFromSeries(seriesByThree);
-            // 0 3 6 9 12 15 18 21 24 27
+            //Print10NumbersFromSeries(seriesByThree);
+            //// 0 3 6 9 12 15 18 21 24 27
 
-            SeriesByFour seriesByFour = new SeriesByFour();
+            //SeriesByFour seriesByFour = new SeriesByFour();
 
             // Print10NumbersFromSeries(seriesByFour); // invalid
 
-            ISeries series = seriesByFour;
-            series.Reset(); 
+            //ISeries series = seriesByFour;
+            //series.Reset();
+            #endregion
+
+            #region Interface Ex 02 [Implicitly vs Explicitly]
+
+            Car car = new Car();
+            car.Backward();
+
+            Airplane airplane = new Airplane();
+            airplane.Backward();
+            //airplane.Forward(); //invalid
+
+            IMoveable moveablePlane = new Airplane();
+            moveablePlane.Forward();
+
+            IFlyable flyablePlane = new Airplane();
+            flyablePlane.Forward();
             #endregion
 
         }
