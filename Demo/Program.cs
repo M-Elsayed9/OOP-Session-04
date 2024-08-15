@@ -124,6 +124,57 @@ namespace Demo
 
             #region Array of Reference Type
 
+            #region Array of String [Immutable Type]
+
+            //string[] Names01 = { "Omar", "Ahmed", "Mohamed" };
+            //string[] Names02 = new string[1]; // {null}
+
+            #region Shallow copy
+            //Console.Write("Hash code of Names01: ");
+            //Console.WriteLine(Names01.GetHashCode());
+
+            //Console.Write("Hash code of Names02: ");
+            //Console.WriteLine(Names02.GetHashCode());
+
+            //Names02 = Names01; // Shallow Copy [in the stack]
+
+            //Console.WriteLine("After Shallow Copy");
+            //Console.Write("Hash code of Names01: ");
+            //Console.WriteLine(Names01.GetHashCode());
+
+            //Console.Write("Hash code of Names02: ");
+            //Console.WriteLine(Names02.GetHashCode());
+
+            //Names02[0] = "Aya";
+            // both will be aya because string is immutable 
+            #endregion
+
+            #region Deep Copy
+            
+            //Names02 = (string[]) Names01.Clone();
+            //// Clone => Deep Copy [in the heap]
+            //// creates a new object with new and different identity
+            //// That object will have the same object state [Data] of the caller object [Names01]
+            //// Return an Object
+
+            //Console.Write("Hash code of Names01: ");
+            //Console.WriteLine(Names01.GetHashCode());
+
+            //Console.Write("Hash code of Names02: ");
+            //Console.WriteLine(Names02.GetHashCode());
+
+            //Names02[0] = "Aya";
+            //// Names01[0] = "Omar"
+
+            //Console.WriteLine("After Deep Copy");
+            //Console.WriteLine(Names01[0]);
+            //Console.WriteLine(Names02[0]);
+            
+
+            #endregion
+            
+            #endregion
+
             #endregion
 
             #endregion
