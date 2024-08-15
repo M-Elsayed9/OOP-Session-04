@@ -1,4 +1,5 @@
 ﻿using Demo.Interfaces;
+using System.Reflection;
 
 namespace Demo
 {
@@ -68,20 +69,63 @@ namespace Demo
             //series.Reset();
             #endregion
 
-            #region Interface Ex 02 [Implicitly vs Explicitly]
+            #region Shallow Copy & Deep Copy
 
-            Car car = new Car();
-            car.Backward();
+            #region Array of Value Type
+            //int[] Arr01 = { 1, 2, 3 };
 
-            Airplane airplane = new Airplane();
-            airplane.Backward();
-            //airplane.Forward(); //invalid
+            //int[] Arr02 = new int[3]; // {0 ,0 ,0} n
 
-            IMoveable moveablePlane = new Airplane();
-            moveablePlane.Forward();
+            //Console.Write("Hash code of arr 1 :");
+            //Console.WriteLine(Arr01.GetHashCode());
 
-            IFlyable flyablePlane = new Airplane();
-            flyablePlane.Forward();
+            //Console.Write("Hash code of arr 2 :");
+            //Console.WriteLine(Arr02.GetHashCode());
+
+            #region SHallow Copy at the stack
+            //Arr02 = Arr01; // Shallow Copy [in the stack]
+            //               // References [Arr01, Arr02] => Same Object
+
+            //Console.WriteLine("After Shallow Copy");
+            //Console.WriteLine(Arr02.GetHashCode());
+            //Console.WriteLine(Arr01.GetHashCode());
+
+            //Arr02[0] = 100;
+            //Console.WriteLine($"Arr01[0] =  {Arr02[0]}"); // 100
+            //Console.WriteLine($"Arr02[0] =  {Arr01[0]}"); // 100 
+            #endregion
+
+
+            #region Deep Copy [Heap]
+            //Arr02 = (int[]) Arr01.Clone();
+            //// Clone => Deep Copy
+            //// deep copy occur at heap 
+            //// creates a new object with different and new identity 
+            //// That object will have the same object state [Data] of the caller object [Arr01]
+            //// Return an Object
+
+            //Console.WriteLine("After Deep Copy");
+            //Console.WriteLine(Arr02.GetHashCode());
+            //Console.WriteLine(Arr01.GetHashCode());
+
+            //Console.WriteLine($"Arr01[0] = {Arr01[0]}");
+            //Console.WriteLine($"Arr02[0] = {Arr02[0]}");
+
+            //Arr01[0] = 100;
+            //Console.WriteLine("After Arr01[0] = 100");
+            //Console.WriteLine($"Arr01[0] {Arr01[0]}"); // 100
+            //Console.WriteLine($"Arr02[0] {Arr02[0]}"); // still 1
+
+
+            #endregion
+
+
+            #endregion
+
+            #region Array of Reference Type
+
+            #endregion
+
             #endregion
 
         }
