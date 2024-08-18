@@ -1,4 +1,5 @@
-﻿using Demo.Interfaces;
+﻿using Demo.IClonable_Interface;
+using Demo.Interfaces;
 using System.Reflection;
 using System.Text;
 
@@ -226,6 +227,78 @@ namespace Demo
             #endregion
 
             #endregion
+
+            #region IClonable Interface
+
+            Employee employee01 = new Employee { Id = 10, Name = "Aliaa", Salary = 9000 };
+            Employee employee02 = new Employee { Id = 20, Name = "Mona", Salary = 10000 };
+
+            Console.WriteLine($"Hash code of employee01: {employee01.GetHashCode()}");
+            Console.WriteLine($"Employee01 = {employee01}");
+            Console.WriteLine($"Hash code of employee02: {employee02.GetHashCode()}");
+            Console.WriteLine($"Employee02 = {employee02}");
+            // different hash code
+
+            #region Shallow Copy and deep Copy
+
+            #region Shallow Copy [Stack]
+            //employee02 = employee01; // Shallow Copy [Stack]
+            //// 2 references [employee01, employee02] => Same Object
+            //// {10, Aliaa, 9000} => 2 references
+            //// {20, Mona, 10000} => 0 references unreacheable object
+
+            //Console.WriteLine("After Shallow Copy");
+            //Console.WriteLine($"Hash code of employee01: {employee01.GetHashCode()}");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Hash code of employee02: {employee02.GetHashCode()}");
+            //Console.WriteLine($"Employee02 = {employee02}");
+            //// same hash code
+
+            //employee01.Id = 100;
+            //employee01.Name = "Aya";
+            //employee01.Salary = 20000;
+            // Employee02 => Id = 100, Name = address of Aya, Salary = 20000
+
+            //Console.WriteLine("After Change employee01");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Employee02 = {employee02}");
+            // both will be the same because of the shallow copy
+            #endregion
+
+            #region Deep Copy
+
+            //employee02 = (Employee) employee01.Clone(); // Deep Copy [Heap]
+            //// creates a new object with new and different identity
+            //// That object will have the same object state [Data] of the caller object [employee01]
+
+            //Console.WriteLine("After Deep Copy");
+            //Console.WriteLine(employee01);
+            //Console.WriteLine($"Hash Code of Employee01 {employee01}");
+            //Console.WriteLine();
+            //Console.WriteLine($"Hash Code of Employee02 {employee02}");
+
+            //employee01.Id = 100;
+            //employee01.Name = "Mona";
+            //// employee02.Name.Append(" Tarek"); // affects both refrences even in the deep copy 
+            //employee01.Salary = 1000;
+
+            //Console.WriteLine("After Deep Copy");
+            //Console.WriteLine($"Hash Code of Employee01 {employee01}");
+            //Console.WriteLine(employee01);
+            //Console.WriteLine($"Hash Code of Employee02 {employee02}");
+            //Console.WriteLine(employee02);
+
+            #endregion
+
+            // we have two ways to deep copy user define data type
+            // 1. Clone
+            // 2. Copy Constructor
+
+            #endregion
+
+            #endregion
+
+            
 
             #endregion
 
