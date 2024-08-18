@@ -1,5 +1,6 @@
 ﻿using Demo.Interfaces;
 using System.Reflection;
+using System.Text;
 
 namespace Demo
 {
@@ -150,7 +151,7 @@ namespace Demo
             #endregion
 
             #region Deep Copy
-            
+
             //Names02 = (string[]) Names01.Clone();
             //// Clone => Deep Copy [in the heap]
             //// creates a new object with new and different identity
@@ -169,10 +170,61 @@ namespace Demo
             //Console.WriteLine("After Deep Copy");
             //Console.WriteLine(Names01[0]);
             //Console.WriteLine(Names02[0]);
-            
+
 
             #endregion
-            
+
+            #endregion
+
+            #region Array of StringBuilder [Mutable Type]
+            StringBuilder[] Name01 = new StringBuilder[1];
+            //Name01[0].Append("Omar"); // invalid NullReferenceException
+
+            Name01[0] = new StringBuilder("Omar");
+
+            StringBuilder[] Name02 = new StringBuilder[1];
+            #region Shallow Copy
+
+
+            //Console.WriteLine("Hash code of Name01: ");
+            //Console.WriteLine(Name01.GetHashCode());
+            //Console.WriteLine("Hash code of Name02: ");
+            //Console.WriteLine(Name02.GetHashCode());
+
+            //Name02 = Name01; // Shallow Copy [in the stack]
+            //// 2 references [Name01, Name02] => Same Object
+
+            //Console.WriteLine("After Shallow Copy");
+            //Console.WriteLine(Name01.GetHashCode());
+            //Console.WriteLine(Name02.GetHashCode());
+
+            //Name02[0].Append("Amr");
+            //Console.WriteLine(Name01[0]); // OmarAmr
+            //Console.WriteLine(Name02[0]); // OmarAmr 
+            #endregion
+
+            #region Deep Copy
+
+            //Name02 = (StringBuilder[]) Name01.Clone(); // Deep Copy
+            //// 2 references  [ Names01, Names02 ] => 2 different addresses
+
+            //Console.WriteLine("Hash code of Name01: ");
+            //Console.WriteLine(Name01.GetHashCode());
+            //Console.WriteLine("Hash code of Name02: ");
+            //Console.WriteLine(Name02.GetHashCode());
+
+            //Console.WriteLine(Name01[0]); // Omar
+            //Console.WriteLine(Name02[0]); // Omar
+
+            //Name01[0].Append(" Ahmed");
+
+            //Console.WriteLine("After Append Ahmed to Name01");
+            //Console.WriteLine(Name01[0]); // Omar Ahmed
+            //Console.WriteLine(Name02[0]); // Omar Ahmed
+
+
+            #endregion
+
             #endregion
 
             #endregion
