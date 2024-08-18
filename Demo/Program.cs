@@ -22,6 +22,13 @@ namespace Demo
         //} 
         #endregion
 
+        public static void SWAP(Employee emp1, Employee emp2)
+        {
+            Employee temp = new Employee(emp1);
+            emp1 = new Employee(emp2);
+            emp2 = new Employee(temp);
+        }
+
         static void Main(string[] args)
         {
             #region Interface
@@ -178,12 +185,12 @@ namespace Demo
             #endregion
 
             #region Array of StringBuilder [Mutable Type]
-            StringBuilder[] Name01 = new StringBuilder[1];
-            //Name01[0].Append("Omar"); // invalid NullReferenceException
+            //StringBuilder[] Name01 = new StringBuilder[1];
+            ////Name01[0].Append("Omar"); // invalid NullReferenceException
 
-            Name01[0] = new StringBuilder("Omar");
+            //Name01[0] = new StringBuilder("Omar");
 
-            StringBuilder[] Name02 = new StringBuilder[1];
+            //StringBuilder[] Name02 = new StringBuilder[1];
             #region Shallow Copy
 
 
@@ -230,13 +237,13 @@ namespace Demo
 
             #region IClonable Interface
 
-            Employee employee01 = new Employee { Id = 10, Name = "Aliaa", Salary = 9000 };
-            Employee employee02 = new Employee { Id = 20, Name = "Mona", Salary = 10000 };
+            //Employee employee01 = new Employee { Id = 10, Name = "Aliaa", Salary = 9000 };
+            //Employee employee02 = new Employee { Id = 20, Name = "Mona", Salary = 10000 };
 
-            Console.WriteLine($"Hash code of employee01: {employee01.GetHashCode()}");
-            Console.WriteLine($"Employee01 = {employee01}");
-            Console.WriteLine($"Hash code of employee02: {employee02.GetHashCode()}");
-            Console.WriteLine($"Employee02 = {employee02}");
+            //Console.WriteLine($"Hash code of employee01: {employee01.GetHashCode()}");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Hash code of employee02: {employee02.GetHashCode()}");
+            //Console.WriteLine($"Employee02 = {employee02}");
             // different hash code
 
             #region Shallow Copy and deep Copy
@@ -298,7 +305,52 @@ namespace Demo
 
             #endregion
 
-            
+            #region Built in Interfcaes IComparable
+
+            //int[] Numbers = { 3, 4, 2, 1, 6, 8, 7, 9, 5 };
+
+            //Array.Sort(Numbers); // uses ICopmarable interface using bubble sort
+
+            //foreach (int num in Numbers)
+            //{
+            //    Console.WriteLine(num);
+            //}
+
+            Employee[] employees = new Employee[4]
+            {
+                new Employee { Id = 10, Name = "Aliaa", Salary = 9000 },
+                new Employee { Id = 20, Name = "Mona", Salary = 10000 },
+                new Employee { Id = 5, Name = "Ahmed", Salary = 8000 },
+                new Employee { Id = 15, Name = "Omar", Salary = 7000 }
+            };
+
+            Array.Sort(employees);
+
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(emp);
+            }
+
+            for (int i = 0; i < employees.Length; i++)
+            {
+                for (int j = 0; j < employees.Length - 1 - i; j++)
+                {
+                    if (employees[j].CompareTo(employees[j + 1]) == 1)
+                    {
+                        SWAP(employees[j], employees[j + 1]);
+                    }
+                }
+            }
+
+            Console.WriteLine("After Bubble Sort");
+            foreach (Employee emp in employees)
+            {
+                Console.WriteLine(emp);
+            }
+
+            Console.WriteLine(employees[0].CompareTo(employees[1]));
+
+            #endregion
 
             #endregion
 
