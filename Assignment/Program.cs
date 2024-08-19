@@ -1,4 +1,6 @@
-﻿namespace Assignment
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Assignment
 {
     internal class Program
     {
@@ -115,11 +117,32 @@
             //d) A class cannot implement multiple interfaces 
 
             // c) By separating interface names with commas
+
             #endregion
+
             #endregion
 
             #region Part 2
 
+            #region Question 1
+            //Question 01:
+            //Define an interface named IShape with a property Area and a method DisplayShapeInfo.
+            //Create two interfaces, ICircle and IRectangle, that inherit from IShape.
+            //Implement these interfaces in classes Circle and Rectangle. 
+            //Test your implementation by crea ting instances of both classes and displaying their shape information.
+
+            //Circle circle = new Circle(10);
+            
+            //circle.DisplayShapeInfo();
+
+            //Rectangle rectangle = new Rectangle();
+
+            //rectangle.Width = 10;
+            //rectangle.Length = 20;
+
+            //rectangle.DisplayShapeInfo();
+
+            #endregion
 
 
             #endregion
