@@ -1,4 +1,4 @@
-﻿using Demo.IClonable_Interface;
+using Demo.IClonable_Interface;
 using Demo.Interfaces;
 using System.Reflection;
 using System.Text;
@@ -33,13 +33,13 @@ namespace Demo
         {
             #region Interface
 
-            //IMyType myType = new IMyType(); // invalid because its not implmented
+            //IMyType myType = new IMyType(); // invalid because it's not implemented
 
             //IMyType myType;
             // you can create a reference but not an object 
-            // CLR will allocated 4 bytes for reference "myType"
+            // CLR will allocate 4 bytes for reference "myType"
             // references myType refer to null
-            // reference myType can refer to an object from class or struct implment interface
+            // reference myType can refer to an object from class or struct implement interface
 
             //myType.Id = 20; // invalid  -> myType refer to null
             //myType.MyFun(20); // invalid -> myType refer to null
@@ -54,7 +54,7 @@ namespace Demo
 
             //IMyType myType2 = new MyType();
             //myType2.Id = 30;
-            //myType2.MyFun(100); // valid because of the inteface reference 
+            //myType2.MyFun(100); // valid because of the interface reference 
             //myType2.print(); 
 
             #endregion
@@ -91,7 +91,7 @@ namespace Demo
             //Console.Write("Hash code of arr 2 :");
             //Console.WriteLine(Arr02.GetHashCode());
 
-            #region SHallow Copy at the stack
+            #region Shallow Copy at the stack
             //Arr02 = Arr01; // Shallow Copy [in the stack]
             //               // References [Arr01, Arr02] => Same Object
 
@@ -251,132 +251,117 @@ namespace Demo
             #region Shallow Copy [Stack]
             //employee02 = employee01; // Shallow Copy [Stack]
             //// 2 references [employee01, employee02] => Same Object
-            //// {10, Aliaa, 9000} => 2 references
-            //// {20, Mona, 10000} => 0 references unreacheable object
+            //// {10, Aliaa , 9000}
 
-            //Console.WriteLine("After Shallow Copy");
             //Console.WriteLine($"Hash code of employee01: {employee01.GetHashCode()}");
-            //Console.WriteLine($"Employee01 = {employee01}");
             //Console.WriteLine($"Hash code of employee02: {employee02.GetHashCode()}");
-            //Console.WriteLine($"Employee02 = {employee02}");
-            //// same hash code
 
-            //employee01.Id = 100;
-            //employee01.Name = "Aya";
-            //employee01.Salary = 20000;
-            // Employee02 => Id = 100, Name = address of Aya, Salary = 20000
-
-            //Console.WriteLine("After Change employee01");
             //Console.WriteLine($"Employee01 = {employee01}");
             //Console.WriteLine($"Employee02 = {employee02}");
-            // both will be the same because of the shallow copy
+
+            //employee01.Name = "Reem";
+            //employee02.Salary = 5000;
+            //Console.WriteLine("After employee01.Name = Reem & employee02.Salary = 5000 ");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Employee02 = {employee02}");
+
             #endregion
 
             #region Deep Copy
+            //employee02 = (Employee)employee01.Clone(); // Deep Copy
+            //// 2 references [employee01, employee02] => 2 different addresses
+            //// 2 references refer to the different objects => different identity & different hashcode
+            //// 2 references refer to objects that have the same state [Data]
 
-            //employee02 = (Employee) employee01.Clone(); // Deep Copy [Heap]
-            //// creates a new object with new and different identity
-            //// That object will have the same object state [Data] of the caller object [employee01]
+            //Console.WriteLine($"Hash code of employee01: {employee01.GetHashCode()}");
+            //Console.WriteLine($"Hash code of employee02: {employee02.GetHashCode()}");
 
-            //Console.WriteLine("After Deep Copy");
-            //Console.WriteLine(employee01);
-            //Console.WriteLine($"Hash Code of Employee01 {employee01}");
-            //Console.WriteLine();
-            //Console.WriteLine($"Hash Code of Employee02 {employee02}");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Employee02 = {employee02}");
 
-            //employee01.Id = 100;
-            //employee01.Name = "Mona";
-            //// employee02.Name.Append(" Tarek"); // affects both refrences even in the deep copy 
-            //employee01.Salary = 1000;
-
-            //Console.WriteLine("After Deep Copy");
-            //Console.WriteLine($"Hash Code of Employee01 {employee01}");
-            //Console.WriteLine(employee01);
-            //Console.WriteLine($"Hash Code of Employee02 {employee02}");
-            //Console.WriteLine(employee02);
-
-            #endregion
-
-            // we have two ways to deep copy user define data type
-            // 1. Clone
-            // 2. Copy Constructor
+            //employee01.Name = "Ali";
+            //employee02.Salary = 5000;
+            //Console.WriteLine("After employee01.Name = Ali & employee02.Salary = 5000 ");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Employee02 = {employee02}");
 
             #endregion
 
             #endregion
 
-            #region Built in Interfcaes IComparable
 
-            //int[] Numbers = { 3, 4, 2, 1, 6, 8, 7, 9, 5 };
+            #region SWAP
 
-            //Array.Sort(Numbers); // uses ICopmarable interface using bubble sort
 
-            //foreach (int num in Numbers)
+            //Console.WriteLine("Before SWAP");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Employee02 = {employee02}");
+
+            //SWAP(employee01, employee02);
+            //Console.WriteLine("After SWAP");
+            //Console.WriteLine($"Employee01 = {employee01}");
+            //Console.WriteLine($"Employee02 = {employee02}");
+
+            // It works but didn't give the output required.
+            #endregion
+
+            #endregion
+
+            #endregion
+
+            #endregion
+
+            #region Printing
+
+            //PropertyInfo[] propertyInfos = typeof(Employee).GetProperties();
+            //foreach (var propertyInfo in propertyInfos)
             //{
-            //    Console.WriteLine(num);
+            //    Console.WriteLine($"{propertyInfo.Name}");
             //}
 
-            //Employee[] employees = new Employee[4]
-            //{
-            //    new Employee { Id = 10, Name = "Aliaa", Salary = 9000 },
-            //    new Employee { Id = 20, Name = "Mona", Salary = 10000 },
-            //    new Employee { Id = 5, Name = "Ahmed", Salary = 8000 },
-            //    new Employee { Id = 15, Name = "Omar", Salary = 7000 }
-            //};
+            //PropertyInfo propertyInfo1 = typeof(Employee).GetProperty("Id");
 
-            //Array.Sort(employees);
+            //Console.WriteLine($"propertyInfo1.Name {propertyInfo1.Name}");
+            //Console.WriteLine($"propertyInfo1.PropertyType {propertyInfo1.PropertyType}");
 
-            //foreach (Employee emp in employees)
-            //{
-            //    Console.WriteLine(emp);
-            //}
+            //Employee employee03 = new Employee { Id = 30, Name = "Ahmad", Salary = 1000 };
 
-            //for (int i = 0; i < employees.Length; i++)
-            //{
-            //    for (int j = 0; j < employees.Length - 1 - i; j++)
-            //    {
-            //        if (employees[j].CompareTo(employees[j + 1]) == 1)
-            //        {
-            //            SWAP(employees[j], employees[j + 1]);
-            //        }
-            //    }
-            //}
-
-            //Console.WriteLine("After Bubble Sort");
-            //foreach (Employee emp in employees)
-            //{
-            //    Console.WriteLine(emp);
-            //}
-
-            //Console.WriteLine(employees[0].CompareTo(employees[1]));
-
+            //Console.WriteLine($"employee03 {employee03}");
             #endregion
 
-            #region Built in Interfaces IComparer
+            #region Inheritance
 
-            Employee[] employees = new Employee[4]
-            {
-                new Employee { Id = 10, Name = "Aliaa", Salary = 9000 },
-                new Employee { Id = 20, Name = "Mona", Salary = 10000 },
-                new Employee { Id = 5, Name = "Ahmed", Salary = 8000 },
-                new Employee { Id = 15, Name = "Omar", Salary = 7000 }
-            };
+            #region Test01
+            //Circle c01 = new Circle();
+            //c01.radius = 10;
+            //c01.printCircleData(); 
+            #endregion
 
-            //Array.Sort(employees);
-
-            foreach (Employee emp in employees)
-            {
-                Console.WriteLine(emp);
-            }
-
-            Array.Sort(employees, new EmployeeIdComparer());
-
+            #region Test02
+            //Rectangle r01 = new Rectangle();
+            //r01.Width = 10;
+            //r01.Height = 20;
+            //r01.printRectData();
+            //r01.ShapeColor = "Green";
+            //r01.printShapeColor(); 
             #endregion
 
             #endregion
 
-            #endregion
+            #region Boxing
 
+            //int x = 10;
+            //object obj = x; // Boxing
+
+            //Console.WriteLine(x);
+            //Console.WriteLine(obj);
+            //Console.WriteLine(obj.GetHashCode());
+
+            //int x2 = (int) obj; // unboxing
+
+            //Console.WriteLine(x2);
+
+            #endregion
         }
     }
 }
