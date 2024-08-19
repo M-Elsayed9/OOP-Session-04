@@ -37,6 +37,8 @@ namespace Demo
             //b) No
             //c) Only if they are static
             //d) Only if they are readonly 
+
+            // b) No
             #endregion
 
             #region Question 4
@@ -46,12 +48,20 @@ namespace Demo
             //b) Yes, interfaces can inherit from multiple interfaces
             //c) Yes, but only if they have the same methods
             //d) Only if the interfaces are in the same namespace
+
+            //b) Yes, interfaces can inherit from multiple interfaces
+
+            #endregion
+
+            #region Quesiton 5
             //Question 5:
             //Which keyword is used to implement an interface in a class in C#?
             //a) inherit
             //b) use
             //c) extends
-            //d) implements 
+            //d) implements  
+
+            // d) implements
             #endregion
 
             #region Question 6
@@ -61,6 +71,8 @@ namespace Demo
             //b) No
             //c) Only if the interface is sealed
             //d) Only if the methods are private 
+
+            // b) Yes
             #endregion
 
             #region Question 7
@@ -70,6 +82,8 @@ namespace Demo
             //b) No, all members are implicitly public
             //c) Yes, but only for abstract members
             //d) Only if the interface is sealed
+
+            // b) No, all members are implicitly public
             #endregion
 
             #region Question 8
