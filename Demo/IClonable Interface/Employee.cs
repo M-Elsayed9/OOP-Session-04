@@ -29,7 +29,7 @@ namespace Demo.IClonable_Interface
             return new Employee(this);
         }
 
-        //public int CompareTo(Employee? obj)
+        //public int CompareTo(Employee? obj) // when using the generic version
         //{
            
         //}
@@ -40,11 +40,11 @@ namespace Demo.IClonable_Interface
 
             Employee? emp = obj as Employee; // unsafe cast
 
-            if(this.Salary> emp.Salary)
+            if(this.Salary > emp?.Salary)
             {
                 return 1;
             }
-            else if(this.Salary < emp.Salary)
+            else if(this.Salary < emp?.Salary)
             {
                 return -1;
             }

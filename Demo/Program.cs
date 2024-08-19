@@ -316,6 +316,44 @@ namespace Demo
             //    Console.WriteLine(num);
             //}
 
+            //Employee[] employees = new Employee[4]
+            //{
+            //    new Employee { Id = 10, Name = "Aliaa", Salary = 9000 },
+            //    new Employee { Id = 20, Name = "Mona", Salary = 10000 },
+            //    new Employee { Id = 5, Name = "Ahmed", Salary = 8000 },
+            //    new Employee { Id = 15, Name = "Omar", Salary = 7000 }
+            //};
+
+            //Array.Sort(employees);
+
+            //foreach (Employee emp in employees)
+            //{
+            //    Console.WriteLine(emp);
+            //}
+
+            //for (int i = 0; i < employees.Length; i++)
+            //{
+            //    for (int j = 0; j < employees.Length - 1 - i; j++)
+            //    {
+            //        if (employees[j].CompareTo(employees[j + 1]) == 1)
+            //        {
+            //            SWAP(employees[j], employees[j + 1]);
+            //        }
+            //    }
+            //}
+
+            //Console.WriteLine("After Bubble Sort");
+            //foreach (Employee emp in employees)
+            //{
+            //    Console.WriteLine(emp);
+            //}
+
+            //Console.WriteLine(employees[0].CompareTo(employees[1]));
+
+            #endregion
+
+            #region Built in Interfaces IComparer
+
             Employee[] employees = new Employee[4]
             {
                 new Employee { Id = 10, Name = "Aliaa", Salary = 9000 },
@@ -324,31 +362,14 @@ namespace Demo
                 new Employee { Id = 15, Name = "Omar", Salary = 7000 }
             };
 
-            Array.Sort(employees);
+            //Array.Sort(employees);
 
             foreach (Employee emp in employees)
             {
                 Console.WriteLine(emp);
             }
 
-            for (int i = 0; i < employees.Length; i++)
-            {
-                for (int j = 0; j < employees.Length - 1 - i; j++)
-                {
-                    if (employees[j].CompareTo(employees[j + 1]) == 1)
-                    {
-                        SWAP(employees[j], employees[j + 1]);
-                    }
-                }
-            }
-
-            Console.WriteLine("After Bubble Sort");
-            foreach (Employee emp in employees)
-            {
-                Console.WriteLine(emp);
-            }
-
-            Console.WriteLine(employees[0].CompareTo(employees[1]));
+            Array.Sort(employees, new EmployeeIdComparer());
 
             #endregion
 
