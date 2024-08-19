@@ -93,6 +93,8 @@ namespace Demo
             //b) To provide a clear separation between interface and class members
             //c) To allow multiple classes to implement the same interface
             //d) To speed up method resolution 
+
+            // b) To provide a clear separation between interface and class members
             #endregion
 
 
@@ -103,6 +105,8 @@ namespace Demo
             //b) No, interfaces cannot have constructors
             //c) Yes, but only if the interface is sealed
             //d) Only if the constructor is static 
+
+            // b) No, interfaces cannot have constructors
             #endregion
 
             #region Question 10
@@ -112,6 +116,8 @@ namespace Demo
             //b) By using the "extends" keyword
             //c) By separating interface names with commas
             //d) A class cannot implement multiple interfaces 
+
+            // c) By separating interface names with commas
             #endregion
 
 
