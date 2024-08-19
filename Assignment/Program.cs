@@ -1,4 +1,7 @@
-﻿using static System.Net.Mime.MediaTypeNames;
+﻿using Assignment.Part2_Q2;
+using System.Data;
+using System.Net;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Assignment
 {
@@ -132,7 +135,7 @@ namespace Assignment
             //Test your implementation by crea ting instances of both classes and displaying their shape information.
 
             //Circle circle = new Circle(10);
-            
+
             //circle.DisplayShapeInfo();
 
             //Rectangle rectangle = new Rectangle();
@@ -144,6 +147,32 @@ namespace Assignment
 
             #endregion
 
+            #region Question 2
+            //Question 02:
+            //In this example, we start by defining the IAuthenticationService interface with two methods:
+            //AuthenticateUser and AuthorizeUser.The BasicAuthenticationService class implements this interface
+            //and provides the specific implementation for these methods.
+            //In the BasicAuthenticationService class, the AuthenticateUser method compares the provided
+            //username and password with the stored credentials.It returns true if the user is authenticated
+            //and false otherwise.The AuthorizeUser method checks if the user with the given username has
+            //the specified role.It returns true if the user is authorized and false otherwise.
+            
+            //In the Main method, we create an instance of the BasicAuthenticationService class and assign
+            //it to the authService variable of type IAuthenticationService.We then call the AuthenticateUser
+            //and AuthorizeUser methods using this interface reference.
+            //This implementation allows you to switch the authentication service implementation easily by
+            //creating a new class that implements the IAuthenticationService interface and providing
+            //the desired logic for authentication and authorization. 
+            
+            //IAuthenticationService AuthenticationService = new BasicAuthenticationService();
+
+            //Console.WriteLine(AuthenticationService.AuthenticateUser("admin", "password"));
+            //Console.WriteLine(AuthenticationService.AuthorizeUser("admin", "admin"));
+
+            //Console.WriteLine(AuthenticationService.AuthenticateUser("Aliaa", "password"));
+            //Console.WriteLine(AuthenticationService.AuthorizeUser("Not Correct UserName", "admin"));
+
+            #endregion
 
             #endregion
         }
